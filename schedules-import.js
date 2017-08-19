@@ -33,7 +33,7 @@ for (const filename of filenames) {
     const event = record[2];
     const gender = record[3];
     const place = record[4];
-    const link = record[5];
+    const link = record[5] ? `https://tickets.2017.taipei${record[5]}` : '';
     const serial = record[6];
     const phase = record[7];
     const promise = sport.child(i).set({
