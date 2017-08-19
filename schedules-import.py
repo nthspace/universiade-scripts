@@ -26,17 +26,25 @@ for (const filename of filenames) {
   // Skip record header
   const records = parse(text).slice(1);
   const promises = [];
-  let promise = Promise.resolve([]);
-  for (const record of records) {
+  for (let i = 0; i < records.length; i++) {
+    const record = records[i];
     const date = record[0];
     const time = record[1];
-    const name = record[2];
-    const gym = record[5];
-    const promise = sport.push({
+    const event = record[2];
+    const gender = record[3];
+    const place = record[4];
+    const link = record[5];
+    const serial = record[6];
+    const phase = record[7];
+    const promise = sport.child(i).set({
       date,
       time,
-      name,
-      gym,
+      event,
+      gender,
+      place,
+      link,
+      serial,
+      phase,
     });
     promises.push(promise);
   }
